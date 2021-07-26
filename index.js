@@ -414,6 +414,10 @@ const ScrollableTabView = createReactClass({
 
 export default ScrollableTabView;
 
+export {
+  DefaultTabBar,
+};
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
