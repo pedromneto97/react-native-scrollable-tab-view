@@ -1,26 +1,26 @@
-const React = require('react');
-const { ViewPropTypes } = ReactNative = require('react-native');
-const PropTypes = require('prop-types');
-const createReactClass = require('create-react-class');
-const {
+import React from 'react';
+import {
+  ViewPropTypes,
   StyleSheet,
   Text,
   View,
   Animated,
-} = ReactNative;
-const Button = require('./Button');
+} from 'react-native';
+import { func, number, array, string } from 'prop-types';
+import createReactClass from 'create-react-class';
+import Button from './Button';
 
 const DefaultTabBar = createReactClass({
   propTypes: {
-    goToPage: PropTypes.func,
-    activeTab: PropTypes.number,
-    tabs: PropTypes.array,
-    backgroundColor: PropTypes.string,
-    activeTextColor: PropTypes.string,
-    inactiveTextColor: PropTypes.string,
+    goToPage: func,
+    activeTab: number,
+    tabs: array,
+    backgroundColor: string,
+    activeTextColor: string,
+    inactiveTextColor: string,
     textStyle: Text.propTypes.style,
     tabStyle: ViewPropTypes.style,
-    renderTab: PropTypes.func,
+    renderTab: func,
     underlineStyle: ViewPropTypes.style,
   },
 
@@ -41,15 +41,15 @@ const DefaultTabBar = createReactClass({
     const fontWeight = isTabActive ? 'bold' : 'normal';
 
     return <Button
-      style={{flex: 1, }}
+      style={{ flex: 1, }}
       key={name}
       accessible={true}
       accessibilityLabel={name}
       accessibilityTraits='button'
       onPress={() => onPressHandler(page)}
     >
-      <View style={[styles.tab, this.props.tabStyle, ]}>
-        <Text style={[{color: textColor, fontWeight, }, textStyle, ]}>
+      <View style={[styles.tab, this.props.tabStyle,]}>
+        <Text style={[{ color: textColor, fontWeight, }, textStyle,]}>
           {name}
         </Text>
       </View>
@@ -69,10 +69,10 @@ const DefaultTabBar = createReactClass({
 
     const translateX = this.props.scrollValue.interpolate({
       inputRange: [0, 1],
-      outputRange: [0,  containerWidth / numberOfTabs],
+      outputRange: [0, containerWidth / numberOfTabs],
     });
     return (
-      <View style={[styles.tabs, {backgroundColor: this.props.backgroundColor, }, this.props.style, ]}>
+      <View style={[styles.tabs, { backgroundColor: this.props.backgroundColor, }, this.props.style,]}>
         {this.props.tabs.map((name, page) => {
           const isTabActive = this.props.activeTab === page;
           const renderTab = this.props.renderTab || this.renderTab;
@@ -113,4 +113,4 @@ const styles = StyleSheet.create({
   },
 });
 
-module.exports = DefaultTabBar;
+export default DefaultTabBar;

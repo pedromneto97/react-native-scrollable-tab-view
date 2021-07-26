@@ -1,23 +1,22 @@
 import createReactClass from 'create-react-class';
 import { any, bool, func, number, object, oneOf, string } from 'prop-types';
 import React, {
-  Children, cloneElement
+  Children,
+  cloneElement,
 } from 'react';
 import {
-  ViewPropTypes
+  ViewPropTypes,
+  Dimensions,
+  View,
+  Animated,
+  Platform,
+  StyleSheet,
 } from 'react-native';
 import PagerView from 'react-native-pager-view';
 import TimerMixin from 'react-timer-mixin';
 import DefaultTabBar from './DefaultTabBar';
 import SceneComponent from './SceneComponent';
 import ScrollableTabBar from './ScrollableTabBar';
-const {
-  Dimensions,
-  View,
-  Animated,
-  Platform,
-  StyleSheet,
-} = ReactNative;
 
 const AnimatedViewPagerAndroid = Platform.OS === 'android' ?
   Animated.createAnimatedComponent(PagerView) :
